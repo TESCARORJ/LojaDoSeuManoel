@@ -8,6 +8,6 @@ namespace LojaDoSeuManoel.Application.DTOs
 {
     public class PedidoRequestDTO
     {
-        public ICollection<ProdutoResponseDTO>? Produtos { get; set; }
+        public ICollection<ProdutoRequestDTO>? Produtos { get; set; }
     }
 }

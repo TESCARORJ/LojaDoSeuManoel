@@ -10,6 +10,6 @@ namespace LojaDoSeuManoel.Domain.Entites
     public class Pedido
     {
         public long PedidoId { get; set; }
-        public ICollection<Produto>? Produtos { get; set; }
+        public List<Produto>? Produtos { get; set; }
     }
 }

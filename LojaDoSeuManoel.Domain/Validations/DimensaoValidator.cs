@@ -12,32 +12,35 @@ namespace LojaDoSeuManoel.Domain.Validations
     public class DimensaoValidator : AbstractValidator<Dimensao>
     {
         private readonly IDimensaoRepository _dimensaoRepository;
-        private int _currentDimensaoId;
-        private double _currentDimensaoAltura;
-        private double _currentDimensaoLargura;
-        private double _currentDimensaoComprimento;
+        //private int _currentDimensaoId;
+        //private double _currentDimensaoAltura;
+        //private double _currentDimensaoLargura;
+        //private double _currentDimensaoComprimento;
 
-        public DimensaoValidator(IDimensaoRepository dimensaoRepository, int currentDimensaoId, double currentDimensaoAltura, double currentDimensaoLargura, double currentDimensaoComprimento)
+        public DimensaoValidator(IDimensaoRepository dimensaoRepository
+            //, int currentDimensaoId, double currentDimensaoAltura, double currentDimensaoLargura, double currentDimensaoComprimento
+            )
         {
             _dimensaoRepository = dimensaoRepository;
-            _currentDimensaoId = currentDimensaoId;
-            _currentDimensaoAltura = currentDimensaoAltura;
-            _currentDimensaoLargura = currentDimensaoLargura;
-            _currentDimensaoComprimento = currentDimensaoComprimento;
+            //_currentDimensaoId = currentDimensaoId;
+            //_currentDimensaoAltura = currentDimensaoAltura;
+            //_currentDimensaoLargura = currentDimensaoLargura;
+            //_currentDimensaoComprimento = currentDimensaoComprimento;
+            ConfigRules();
         }
 
         //método para receber o ID da Dimensão
-        public void SetCurrentDimensaoId(int currentDimensaoId)
-        {
-            _currentDimensaoId = currentDimensaoId;
-        }
+        //public void SetCurrentDimensaoId(int currentDimensaoId)
+        //{
+        //    _currentDimensaoId = currentDimensaoId;
+        //}
 
-        public void SetCurrentDimensaoValores(double altura, double largura, double comprimento)
-        {
-            _currentDimensaoAltura = altura;
-            _currentDimensaoLargura = largura;
-            _currentDimensaoComprimento = comprimento;
-        }
+        //public void SetCurrentDimensaoValores(double altura, double largura, double comprimento)
+        //{
+        //    _currentDimensaoAltura = altura;
+        //    _currentDimensaoLargura = largura;
+        //    _currentDimensaoComprimento = comprimento;
+        //}
 
         public void ConfigRules()
         {

@@ -23,6 +23,7 @@ namespace LojaDoSeuManoel.Infra.Data.SqlServer.Extensions
 
             services.AddDbContext<DataContext>(options => options.UseSqlServer(connectionString));
 
+            services.AddTransient<ICaixaRepository, CaixaRepository>();
             services.AddTransient<IDimensaoRepository, DimensaoRepository>();
             services.AddTransient<IProdutoRepository, ProdutoRepository>();
             services.AddTransient<IPedidoRepository, PedidoRepository>();

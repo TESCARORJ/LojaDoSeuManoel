@@ -16,6 +16,7 @@ namespace LojaDoSeuManoel.Infra.Data.SqlServer.Contexts
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.ApplyConfiguration(new CaixaMap());
             modelBuilder.ApplyConfiguration(new DimensaoMap());
             modelBuilder.ApplyConfiguration(new ProdutoMap());
             modelBuilder.ApplyConfiguration(new PedidoMap());

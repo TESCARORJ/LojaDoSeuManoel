@@ -48,8 +48,8 @@ namespace LojaDoSeuManoel.Domain.Services
                 throw new ProdutoNotFoundException(produto.Id);
             }
 
-            if (_validator is ProdutoValidator validator)
-                validator.SetCurrentProdutoId(produto.ProdutoId);
+            //if (_validator is ProdutoValidator validator)
+            //    validator.SetCurrentProdutoId(produto.ProdutoId);
 
             var validatorResult = await _validator.ValidateAsync(produto);
             if (validatorResult.IsValid)

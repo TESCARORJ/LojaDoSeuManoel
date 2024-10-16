@@ -16,9 +16,13 @@ namespace LojaDoSeuManoel.Application.Extensions
         {
             services.AddAutoMapper(typeof(ProfileMap)); 
 
+            services.AddTransient<ICaixaService, CaixaService>();
             services.AddTransient<IDimensaoService, DimensaoService>();
             services.AddTransient<IPedidoService, PedidoService>();
-            services.AddTransient<IProdutoService, ProdutoService>();   
+            services.AddTransient<IProdutoService, ProdutoService>();
+
+            //injeção de dependência para o MediatR
+            services.AddMediatR(m => m.RegisterServicesFromAssemblies(AppDomain.CurrentDomain.GetAssemblies()));
 
             return services;
         }

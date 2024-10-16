@@ -8,6 +8,8 @@ namespace LojaDoSeuManoel.Application.Mappings
     {
         public ProfileMap() 
         {
+            CreateMap<CaixaRequestDTO, Caixa>();
+            CreateMap<Caixa, CaixaResponseDTO>();
             CreateMap<DimensaoRequestDTO, Dimensao>();
             CreateMap<Dimensao, DimensaoResponseDTO>();
             CreateMap<PedidoRequestDTO, Pedido>();

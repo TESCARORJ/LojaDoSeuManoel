@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace LojaDoSeuManoel.Application.DTOs
 {
-    public class ProdutoRequestDTO
+    public class CaixaResponseDTO
     {
-        public string? ProdutoId { get; set; }
-        public DimensaoRequestDTO? Dimensao { get; set; }
+        public int Id { get; set; }
+        public string? CaixaId { get; set; }
 
     }
 }

@@ -4,18 +4,18 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace LojaDoSeuManoel.Infra.Data.SqlServer.Mappings
 {
-    public class ProdutoMap : IEntityTypeConfiguration<Produto>
+    public class CaixaMap : IEntityTypeConfiguration<Caixa>
     {
-        public void Configure(EntityTypeBuilder<Produto> builder)
+        public void Configure(EntityTypeBuilder<Caixa> builder)
         {
-            builder.ToTable("TB_PRODUTO");
+            builder.ToTable("TB_CAIXA");
 
             builder.HasKey(p => p.Id);
 
             builder.Property(p => p.Id).HasColumnName("Id");
 
-            builder.Property(p => p.ProdutoId)
-                .HasColumnName("ProdutoId")
+            builder.Property(p => p.CaixaId)
+                .HasColumnName("CaixaId")
                 .HasColumnType("varchar(100)")
                 .IsRequired();
 

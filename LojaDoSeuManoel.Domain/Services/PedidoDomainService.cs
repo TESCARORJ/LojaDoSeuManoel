@@ -48,8 +48,8 @@ namespace LojaDoSeuManoel.Domain.Services
                 throw new PedidoNotFoundException(pedido.PedidoId);
             }
 
-            if (_validator is PedidoValidator validator)
-                validator.SetCurrentPedidoId(pedido.PedidoId);
+            //if (_validator is PedidoValidator validator)
+            //    validator.SetCurrentPedidoId(pedido.PedidoId);
 
             var validatorResult = await _validator.ValidateAsync(pedido);
             if (validatorResult.IsValid)

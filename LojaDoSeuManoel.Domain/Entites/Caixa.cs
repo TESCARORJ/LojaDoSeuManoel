@@ -6,10 +6,13 @@ using System.Threading.Tasks;
 
 namespace LojaDoSeuManoel.Domain.Entites
 {
-    public class Produto
+    public class Caixa
     {
         public int Id { get; set; }
-        public string? ProdutoId { get; set; }
+        public string? CaixaId { get; set; }
         public Dimensao? Dimensao { get; set; }
+        public List<Produto>? Produtos { get; set; }
+        public string? Observacao { get; set; }
+
     }
 }

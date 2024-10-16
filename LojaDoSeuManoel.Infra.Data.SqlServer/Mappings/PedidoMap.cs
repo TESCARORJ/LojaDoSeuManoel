@@ -8,7 +8,7 @@ namespace LojaDoSeuManoel.Infra.Data.SqlServer.Mappings
     {
         public void Configure(EntityTypeBuilder<Pedido> builder)
         {
-            builder.ToTable("TB_PEDIDOS");
+            builder.ToTable("TB_PEDIDO");
 
             builder.HasKey(p => p.PedidoId);
 

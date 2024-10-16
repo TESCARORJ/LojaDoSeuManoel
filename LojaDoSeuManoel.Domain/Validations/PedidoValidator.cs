@@ -12,19 +12,23 @@ namespace LojaDoSeuManoel.Domain.Validations
     public class PedidoValidator : AbstractValidator<Pedido>
     {
         private readonly IPedidoRepository _pedidoRepository;
-        private long _currentPedidoId;
+        //private long _currentPedidoId;
 
-        public PedidoValidator(IPedidoRepository pedidoRepository, long currentPedidoId)
+        public PedidoValidator(IPedidoRepository pedidoRepository
+            //, long currentPedidoId
+            )
         {
             _pedidoRepository = pedidoRepository;
-            _currentPedidoId = currentPedidoId;
+            //_currentPedidoId = currentPedidoId;
+            ConfigRules();
+
         }
 
         //método para receber o ID da Pedido
-        public void SetCurrentPedidoId(long currentPedidoId)
-        {
-            _currentPedidoId = currentPedidoId;
-        }
+        //public void SetCurrentPedidoId(long currentPedidoId)
+        //{
+        //    _currentPedidoId = currentPedidoId;
+        //}
 
         public void ConfigRules()
         {

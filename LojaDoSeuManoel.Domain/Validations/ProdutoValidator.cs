@@ -12,19 +12,23 @@ namespace LojaDoSeuManoel.Domain.Validations
     public class ProdutoValidator : AbstractValidator<Produto>
     {
         private readonly IProdutoRepository _produtoRepository;
-        private string _currentProdutoId;
+        //private string _currentProdutoId;
 
-        public ProdutoValidator(IProdutoRepository produtoRepository, string currentProdutoId)
+        public ProdutoValidator(IProdutoRepository produtoRepository
+            //, string currentProdutoId
+            )
         {
             _produtoRepository = produtoRepository;
-            _currentProdutoId = currentProdutoId;
+            //_currentProdutoId = currentProdutoId;
+            ConfigRules();
+
         }
 
         //método para receber o ID da Produto
-        public void SetCurrentProdutoId(string currentProdutoId)
-        {
-            _currentProdutoId = currentProdutoId;
-        }
+        //public void SetCurrentProdutoId(string currentProdutoId)
+        //{
+        //    _currentProdutoId = currentProdutoId;
+        //}
 
         public void ConfigRules() 
         {          
@@ -32,6 +36,12 @@ namespace LojaDoSeuManoel.Domain.Validations
             RuleFor(p => p.ProdutoId)
                 .NotEmpty().WithMessage("O campo ProdutoId é obrigatório")
                 .MaximumLength(100).WithMessage("O campo ProdutoId deve ter no máximo 100 caracteres");
+
+            RuleFor(x => x)
+                .MustAsync(async (dimensao, cancellation) =>
+                !await _produtoRepository.VerifyExistsAsync(
+                    d => d.ProdutoId == dimensao.ProdutoId))
+                .WithMessage("Produto já cadastrado");
 
         }
     }
