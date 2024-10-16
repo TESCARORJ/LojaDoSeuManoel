@@ -11,9 +11,9 @@ namespace LojaDoSeuManoel.Application.Interfaces
     {
 
         Task<DimensaoResponseDTO> AddAsync(DimensaoRequestDTO request);
-        Task<DimensaoResponseDTO> UpdateAsync(Guid id, DimensaoRequestDTO request);
-        Task<DimensaoResponseDTO> DeleteAsync(Guid id);
-        Task<DimensaoResponseDTO?> GetByIdAsync(Guid id);
+        Task<DimensaoResponseDTO> UpdateAsync(DimensaoRequestDTO request);
+        Task<DimensaoResponseDTO> DeleteAsync(int id);
+        Task<DimensaoResponseDTO?> GetByIdAsync(int id);
        
     }
 }

@@ -23,7 +23,7 @@ namespace LojaDoSeuManoel.Domain.Services
             _validator = validator;
         }
 
-        public async Task<Dimensao> AddASync(Dimensao dimensao)
+        public async Task<Dimensao> AddAsync(Dimensao dimensao)
         {
             var validatorResult = await _validator.ValidateAsync(dimensao);
 

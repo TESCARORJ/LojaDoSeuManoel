@@ -9,7 +9,7 @@ namespace LojaDoSeuManoel.Domain.Interfaces.Services
 {
     public interface IDimensaoDomainService : IDisposable
     {
-        Task<Dimensao> AddASync(Dimensao dimensao);
+        Task<Dimensao> AddAsync(Dimensao dimensao);
         Task<Dimensao> UpdateAsync(Dimensao dimensao);
         Task<Dimensao> DeleteAsync(int id);
         Task<Dimensao> GetByIdAsync(int id);

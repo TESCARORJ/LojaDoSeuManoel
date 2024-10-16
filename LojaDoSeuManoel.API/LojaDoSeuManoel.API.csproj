@@ -15,10 +15,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Controllers\" />
-  </ItemGroup>
-
-  <ItemGroup>
+    <ProjectReference Include="..\LojaDoSeuManoel.Application\LojaDoSeuManoel.Application.csproj" />
+    <ProjectReference Include="..\LojaDoSeuManoel.Domain\LojaDoSeuManoel.Domain.csproj" />
+    <ProjectReference Include="..\LojaDoSeuManoel.Infra.Data.MongoDB\LojaDoSeuManoel.Infra.Data.MongoDB.csproj" />
     <ProjectReference Include="..\LojaDoSeuManoel.Infra.Data.SqlServer\LojaDoSeuManoel.Infra.Data.SqlServer.csproj" />
   </ItemGroup>
 
