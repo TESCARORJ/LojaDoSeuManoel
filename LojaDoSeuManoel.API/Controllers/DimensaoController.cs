@@ -1,4 +1,5 @@
-﻿using LojaDoSeuManoel.Application.DTOs;
+﻿using LojaDoSeuManoel.API.Security;
+using LojaDoSeuManoel.Application.DTOs;
 using LojaDoSeuManoel.Application.Interfaces;
 using LojaDoSeuManoel.Application.Services;
 using Microsoft.AspNetCore.Http;
@@ -49,6 +50,11 @@ namespace LojaDoSeuManoel.API.Controllers
         [ProducesResponseType(typeof(IEnumerable<CaixaResponseDTO>), 200)]
         public async Task<IActionResult> GetAll()
         {
+            if (!BasicAuthenticationSecurity.AuthenticateRequest(Request))
+            {
+                return Unauthorized(new { Message = "Autenticação falhou. Credenciais inválidas." });
+            }
+
             return StatusCode(200, await _dimensaoService.GetAllAsync());
         }
 
