@@ -17,26 +17,29 @@ namespace LojaDoSeuManoel.API.Controllers
             _caixaService = caixaService;
         }
 
-        //[HttpPost]
-        //[ProducesResponseType(typeof(CaixaResponseDTO), 201)]
-        //public async Task<IActionResult> Post([FromBody] CaixaRequestDTO request)
-        //{
-        //    return StatusCode(201,await _caixaService.AddAsync(request));
-        //}
+        [HttpPost]
+        [ApiExplorerSettings(IgnoreApi = true)]
+        [ProducesResponseType(typeof(CaixaResponseDTO), 201)]
+        public async Task<IActionResult> Post([FromBody] CaixaRequestDTO request)
+        {
+            return StatusCode(201, await _caixaService.AddAsync(request));
+        }
 
-        //[HttpPut("{id}")]
-        //[ProducesResponseType(typeof(CaixaResponseDTO), 200)]
-        //public async Task<IActionResult> Put(Guid id,[FromBody] CaixaRequestDTO request)
-        //{
-        //    return StatusCode(200, await _caixaService.UpdateAsync(request));
-        //}
+        [HttpPut("{id}")]
+        [ApiExplorerSettings(IgnoreApi = true)]
+        [ProducesResponseType(typeof(CaixaResponseDTO), 200)]
+        public async Task<IActionResult> Put(Guid id, [FromBody] CaixaRequestDTO request)
+        {
+            return StatusCode(200, await _caixaService.UpdateAsync(request));
+        }
 
-        //[HttpDelete("{id}")]
-        //[ProducesResponseType(typeof(CaixaResponseDTO), 200)]
-        //public async Task<IActionResult> Delete(int id)
-        //{
-        //    return StatusCode(200,await _caixaService.DeleteAsync(id));
-        //}       
+        [HttpDelete("{id}")]
+        [ApiExplorerSettings(IgnoreApi = true)]
+        [ProducesResponseType(typeof(CaixaResponseDTO), 200)]
+        public async Task<IActionResult> Delete(int id)
+        {
+            return StatusCode(200, await _caixaService.DeleteAsync(id));
+        }
 
         [HttpGet]
         [ProducesResponseType(typeof(IEnumerable<CaixaResponseDTO>), 200)]

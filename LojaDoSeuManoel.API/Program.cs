@@ -64,8 +64,8 @@ app.UseMiddleware<ValidationExceptionMiddleware>();
 app.UseSwagger();
 app.UseSwaggerUI(options =>
 {
-    options.SwaggerEndpoint("/swagger/v1/swagger.json", "Email API v1");
-    options.DocumentTitle = "Email API - Documentação com Autenticação Básica";
+    options.SwaggerEndpoint("/swagger/v1/swagger.json", "Loja Do Seu Manoel API v1");
+    options.DocumentTitle = "Loja Do Seu Manoel - Documentação com Autenticação Básica";
 });
 
 app.UseAuthorization();

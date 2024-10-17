@@ -24,61 +24,61 @@ namespace LojaDoSeuManoel.Domain.Services
             _validator = validator;
         }
 
-        //public async Task<Caixa> AddAsync(Caixa caixa)
-        //{
-        //    var validatorResult = await _validator.ValidateAsync(caixa);
+        public async Task<Caixa> AddAsync(Caixa caixa)
+        {
+            var validatorResult = await _validator.ValidateAsync(caixa);
 
-        //    if (validatorResult.IsValid)
-        //    {
-        //        throw new ValidationException(validatorResult.Errors);
-        //    }
-        //    await _caixaRepository.AddAsync(caixa);
-        //    return caixa;
-        //}
+            if (validatorResult.IsValid)
+            {
+                throw new ValidationException(validatorResult.Errors);
+            }
+            await _caixaRepository.AddAsync(caixa);
+            return caixa;
+        }
 
-        //public async Task<Caixa> UpdateAsync(Caixa caixa)
-        //{
+        public async Task<Caixa> UpdateAsync(Caixa caixa)
+        {
 
-        //    if (caixa == null)
-        //    {
-        //        throw new Exception("Caixa inválido");
-        //    }
+            if (caixa == null)
+            {
+                throw new Exception("Caixa inválido");
+            }
 
-        //    if (!await _caixaRepository.VerifyExistsAsync(x => x.Id == caixa.Id))
-        //    {
-        //        throw new CaixaNotFoundException(caixa.Id);
-        //    }
+            if (!await _caixaRepository.VerifyExistsAsync(x => x.Id == caixa.Id))
+            {
+                throw new CaixaNotFoundException(caixa.Id);
+            }
 
-        //    //if (_validator is CaixaValidator validator)
-        //    //    validator.SetCurrentCaixaId(caixa.CaixaId);
+            //if (_validator is CaixaValidator validator)
+            //    validator.SetCurrentCaixaId(caixa.CaixaId);
 
-        //    var validatorResult = await _validator.ValidateAsync(caixa);
-        //    if (validatorResult.IsValid)
-        //    {
-        //        throw new ValidationException(validatorResult.Errors);
-        //    }
+            var validatorResult = await _validator.ValidateAsync(caixa);
+            if (validatorResult.IsValid)
+            {
+                throw new ValidationException(validatorResult.Errors);
+            }
 
-        //    await _caixaRepository.UpdateAsync(caixa);
-        //    return caixa;
+            await _caixaRepository.UpdateAsync(caixa);
+            return caixa;
 
-        //}
+        }
 
-        //public async Task<Caixa> DeleteAsync(int id)
-        //{
-        //    var caixa = await _caixaRepository.GetByIdAsync(id);
-        //    if (caixa == null)
-        //    {
-        //        throw new CaixaNotFoundException(id);
-        //    }
+        public async Task<Caixa> DeleteAsync(int id)
+        {
+            var caixa = await _caixaRepository.GetByIdAsync(id);
+            if (caixa == null)
+            {
+                throw new CaixaNotFoundException(id);
+            }
 
-        //    await _caixaRepository.DeleteAsync(caixa);
-        //    return caixa;
-        //}
+            await _caixaRepository.DeleteAsync(caixa);
+            return caixa;
+        }
 
-        //public Task<Caixa> GetByIdAsync(int id)
-        //{
-        //    return _caixaRepository.GetByIdAsync(id);
-        //}
+        public Task<Caixa> GetByIdAsync(int id)
+        {
+            return _caixaRepository.GetByIdAsync(id);
+        }
 
         public async Task<List<Caixa>> GetAllAsync()
         {

@@ -22,35 +22,35 @@ namespace LojaDoSeuManoel.Application.Services
             _mapper = mapper;
         }
 
-        //public async Task<CaixaResponseDTO> AddAsync(CaixaRequestDTO request)
-        //{
-        //    var cliente = _mapper.Map<Caixa>(request);
+        public async Task<CaixaResponseDTO> AddAsync(CaixaRequestDTO request)
+        {
+            var cliente = _mapper.Map<Caixa>(request);
 
-        //    var result = await _caixaDomainService.AddAsync(cliente);
-        //    return _mapper.Map<CaixaResponseDTO>(result);
-        //}
-        //public async Task<CaixaResponseDTO> UpdateAsync(CaixaRequestDTO request)
-        //{
-        //    var cliente = _mapper?.Map<Caixa>(request);
+            var result = await _caixaDomainService.AddAsync(cliente);
+            return _mapper.Map<CaixaResponseDTO>(result);
+        }
+        public async Task<CaixaResponseDTO> UpdateAsync(CaixaRequestDTO request)
+        {
+            var cliente = _mapper?.Map<Caixa>(request);
 
-        //    var result = await _caixaDomainService.UpdateAsync(cliente);
+            var result = await _caixaDomainService.UpdateAsync(cliente);
 
-        //    return _mapper.Map<CaixaResponseDTO>(result);
-        //}
+            return _mapper.Map<CaixaResponseDTO>(result);
+        }
 
-        //public async Task<CaixaResponseDTO> DeleteAsync(int id)
-        //{
-        //    var result = await _caixaDomainService.DeleteAsync(id);
+        public async Task<CaixaResponseDTO> DeleteAsync(int id)
+        {
+            var result = await _caixaDomainService.DeleteAsync(id);
 
-        //    return _mapper.Map<CaixaResponseDTO>(result);
-        //}
+            return _mapper.Map<CaixaResponseDTO>(result);
+        }
 
-        //public async Task<CaixaResponseDTO> GetByIdAsync(int id)
-        //{
-        //    var result = await _caixaDomainService.GetByIdAsync(id);
+        public async Task<CaixaResponseDTO> GetByIdAsync(int id)
+        {
+            var result = await _caixaDomainService.GetByIdAsync(id);
 
-        //    return _mapper.Map<CaixaResponseDTO>(result);
-        //}
+            return _mapper.Map<CaixaResponseDTO>(result);
+        }
 
         public async Task<List<CaixaResponseDTO>> GetAllAsync()
         {

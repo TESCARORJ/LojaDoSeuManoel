@@ -23,35 +23,35 @@ namespace LojaDoSeuManoel.Application.Services
             _mapper = mapper;
         }
 
-        //public async Task<DimensaoResponseDTO> AddAsync(DimensaoRequestDTO request)
-        //{
-        //    var cliente = _mapper.Map<Dimensao>(request);
+        public async Task<DimensaoResponseDTO> AddAsync(DimensaoRequestDTO request)
+        {
+            var cliente = _mapper.Map<Dimensao>(request);
 
-        //    var result = await _dimensaoDomainService.AddAsync(cliente);
-        //    return _mapper.Map<DimensaoResponseDTO>(result);
-        //}
-        //public async Task<DimensaoResponseDTO> UpdateAsync(DimensaoRequestDTO request)
-        //{
-        //    var cliente = _mapper?.Map<Dimensao>(request);
+            var result = await _dimensaoDomainService.AddAsync(cliente);
+            return _mapper.Map<DimensaoResponseDTO>(result);
+        }
+        public async Task<DimensaoResponseDTO> UpdateAsync(DimensaoRequestDTO request)
+        {
+            var cliente = _mapper?.Map<Dimensao>(request);
 
-        //    var result = await _dimensaoDomainService.UpdateAsync(cliente);
+            var result = await _dimensaoDomainService.UpdateAsync(cliente);
 
-        //    return _mapper.Map<DimensaoResponseDTO>(result);
-        //}
+            return _mapper.Map<DimensaoResponseDTO>(result);
+        }
 
-        //public async Task<DimensaoResponseDTO> DeleteAsync(int id)
-        //{
-        //    var result = await _dimensaoDomainService.DeleteAsync(id);
+        public async Task<DimensaoResponseDTO> DeleteAsync(int id)
+        {
+            var result = await _dimensaoDomainService.DeleteAsync(id);
 
-        //    return _mapper.Map<DimensaoResponseDTO>(result);
-        //}
+            return _mapper.Map<DimensaoResponseDTO>(result);
+        }
 
-        //public async Task<DimensaoResponseDTO> GetByIdAsync(int id)
-        //{
-        //    var result = await _dimensaoDomainService.GetByIdAsync(id);
+        public async Task<DimensaoResponseDTO> GetByIdAsync(int id)
+        {
+            var result = await _dimensaoDomainService.GetByIdAsync(id);
 
-        //    return _mapper.Map<DimensaoResponseDTO>(result);
-        //}
+            return _mapper.Map<DimensaoResponseDTO>(result);
+        }
 
         public async Task<List<DimensaoResponseDTO>> GetAllAsync()
         {

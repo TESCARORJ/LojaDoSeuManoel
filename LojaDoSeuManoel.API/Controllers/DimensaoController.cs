@@ -18,33 +18,37 @@ namespace LojaDoSeuManoel.API.Controllers
             _dimensaoService = dimensaoService;
         }
 
-        //[HttpPost]
-        //[ProducesResponseType(typeof(DimensaoResponseDTO), 201)]
-        //public async Task<IActionResult> Post([FromBody] DimensaoRequestDTO request)
-        //{
-        //    return StatusCode(201,await _dimensaoService.AddAsync(request));
-        //}
+        [HttpPost]
+        [ApiExplorerSettings(IgnoreApi = true)]
+        [ProducesResponseType(typeof(DimensaoResponseDTO), 201)]
+        public async Task<IActionResult> Post([FromBody] DimensaoRequestDTO request)
+        {
+            return StatusCode(201, await _dimensaoService.AddAsync(request));
+        }
 
-        //[HttpPut("{id}")]
-        //[ProducesResponseType(typeof(DimensaoResponseDTO), 200)]
-        //public async Task<IActionResult> Put(Guid id,[FromBody] DimensaoRequestDTO request)
-        //{
-        //    return StatusCode(200, await _dimensaoService.UpdateAsync(request));
-        //}
+        [HttpPut("{id}")]
+        [ApiExplorerSettings(IgnoreApi = true)]
+        [ProducesResponseType(typeof(DimensaoResponseDTO), 200)]
+        public async Task<IActionResult> Put(Guid id, [FromBody] DimensaoRequestDTO request)
+        {
+            return StatusCode(200, await _dimensaoService.UpdateAsync(request));
+        }
 
-        //[HttpDelete("{id}")]
-        //[ProducesResponseType(typeof(DimensaoResponseDTO), 200)]
-        //public async Task<IActionResult> Delete(int id)
-        //{
-        //    return StatusCode(200,await _dimensaoService.DeleteAsync(id));
-        //}       
+        [HttpDelete("{id}")]
+        [ApiExplorerSettings(IgnoreApi = true)]
+        [ProducesResponseType(typeof(DimensaoResponseDTO), 200)]
+        public async Task<IActionResult> Delete(int id)
+        {
+            return StatusCode(200, await _dimensaoService.DeleteAsync(id));
+        }
 
-        //[HttpGet("{id}")]
-        //[ProducesResponseType(typeof(DimensaoResponseDTO), 200)]
-        //public async Task<IActionResult> GetById(int id)
-        //{
-        //    return StatusCode(200,await _dimensaoService.GetByIdAsync(id));
-        //}
+        [HttpGet("{id}")]
+        [ApiExplorerSettings(IgnoreApi = true)]
+        [ProducesResponseType(typeof(DimensaoResponseDTO), 200)]
+        public async Task<IActionResult> GetById(int id)
+        {
+            return StatusCode(200, await _dimensaoService.GetByIdAsync(id));
+        }
 
         [HttpGet]
         [ProducesResponseType(typeof(IEnumerable<CaixaResponseDTO>), 200)]

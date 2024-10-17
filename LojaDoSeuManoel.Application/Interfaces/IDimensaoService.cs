@@ -10,10 +10,10 @@ namespace LojaDoSeuManoel.Application.Interfaces
     public interface IDimensaoService : IDisposable
     {
 
-        //Task<DimensaoResponseDTO> AddAsync(DimensaoRequestDTO request);
-        //Task<DimensaoResponseDTO> UpdateAsync(DimensaoRequestDTO request);
-        //Task<DimensaoResponseDTO> DeleteAsync(int id);
-        //Task<DimensaoResponseDTO?> GetByIdAsync(int id);
+        Task<DimensaoResponseDTO> AddAsync(DimensaoRequestDTO request);
+        Task<DimensaoResponseDTO> UpdateAsync(DimensaoRequestDTO request);
+        Task<DimensaoResponseDTO> DeleteAsync(int id);
+        Task<DimensaoResponseDTO?> GetByIdAsync(int id);
         Task<List<DimensaoResponseDTO>> GetAllAsync();
 
     }
