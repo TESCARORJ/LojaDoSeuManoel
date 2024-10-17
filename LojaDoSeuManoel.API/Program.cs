@@ -4,6 +4,7 @@ using LojaDoSeuManoel.Domain.Extensions;
 using LojaDoSeuManoel.Application.Extensions;
 using LojaDoSeuManoel.API.Middlewares;
 using LojaDoSeuManoel.Infra.Data.MongoDB.Extensions;
+using LojaDoSeuManoel.API.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -11,7 +12,7 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 
 builder.Services.AddControllers();
-//builder.Services.AddSwaggerConfig();
+builder.Services.AddRegistros();
 builder.Services.AddEntityFramework(builder.Configuration);
 builder.Services.AddDomainServices();
 builder.Services.AddApplicationServices();
