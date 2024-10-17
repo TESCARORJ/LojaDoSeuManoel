@@ -5,8 +5,8 @@ namespace LojaDoSeuManoel.API.Security
     public static class BasicAuthenticationSecurity
     {
         // Defina suas credenciais fixas aqui
-        private const string Username = "coti-informatica";
-        private const string Password = "Coti2024!";
+        private const string Username = "LDSM_Tescaro";
+        private const string Password = "thiagotescaro2024";
 
         public static bool AuthenticateRequest(HttpRequest request)
         {

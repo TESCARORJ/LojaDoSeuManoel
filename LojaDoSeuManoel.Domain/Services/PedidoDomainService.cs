@@ -46,10 +46,7 @@ namespace LojaDoSeuManoel.Domain.Services
             if (!await _pedidoRepository.VerifyExistsAsync(x => x.PedidoId == pedido.PedidoId))
             {
                 throw new PedidoNotFoundException(pedido.PedidoId);
-            }
-
-            //if (_validator is PedidoValidator validator)
-            //    validator.SetCurrentPedidoId(pedido.PedidoId);
+            }         
 
             var validatorResult = await _validator.ValidateAsync(pedido);
             if (validatorResult.IsValid)

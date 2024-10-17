@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace LojaDoSeuManoel.Infra.Data.SqlServer.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20241016174534_InicioProjeto")]
+    [Migration("20241017132024_InicioProjeto")]
     partial class InicioProjeto
     {
         /// <inheritdoc />
@@ -101,9 +101,6 @@ namespace LojaDoSeuManoel.Infra.Data.SqlServer.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<int?>("CaixaId")
-                        .HasColumnType("int");
-
                     b.Property<int?>("DimensaoId")
                         .HasColumnType("int");
 
@@ -116,8 +113,6 @@ namespace LojaDoSeuManoel.Infra.Data.SqlServer.Migrations
                         .HasColumnName("ProdutoId");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("CaixaId");
 
                     b.HasIndex("DimensaoId");
 
@@ -137,10 +132,6 @@ namespace LojaDoSeuManoel.Infra.Data.SqlServer.Migrations
 
             modelBuilder.Entity("LojaDoSeuManoel.Domain.Entites.Produto", b =>
                 {
-                    b.HasOne("LojaDoSeuManoel.Domain.Entites.Caixa", null)
-                        .WithMany("Produtos")
-                        .HasForeignKey("CaixaId");
-
                     b.HasOne("LojaDoSeuManoel.Domain.Entites.Dimensao", "Dimensao")
                         .WithMany()
                         .HasForeignKey("DimensaoId");
@@ -150,11 +141,6 @@ namespace LojaDoSeuManoel.Infra.Data.SqlServer.Migrations
                         .HasForeignKey("PedidoId");
 
                     b.Navigation("Dimensao");
-                });
-
-            modelBuilder.Entity("LojaDoSeuManoel.Domain.Entites.Caixa", b =>
-                {
-                    b.Navigation("Produtos");
                 });
 
             modelBuilder.Entity("LojaDoSeuManoel.Domain.Entites.Pedido", b =>

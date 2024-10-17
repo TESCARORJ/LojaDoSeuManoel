@@ -20,7 +20,21 @@ services:
     volumes:
       - mongodb_data:/data/db
     networks:
+      - mynetwork 
+
+  lojadoseumanoel:
+    build:
+      context: .
+      dockerfile: ./LojaDoSeuManoel.API/Dockerfile
+    container_name: lojadoseumanoel
+    ports:
+      - "8080:8080"
+    depends_on:
+      - sqlserver
+      - mongodb
+    networks:
       - mynetwork
+
 
 volumes:
   sqlserver_data:

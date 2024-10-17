@@ -65,17 +65,11 @@ namespace LojaDoSeuManoel.Infra.Data.SqlServer.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     ProdutoId = table.Column<string>(type: "varchar(100)", nullable: false),
                     DimensaoId = table.Column<int>(type: "int", nullable: true),
-                    CaixaId = table.Column<int>(type: "int", nullable: true),
                     PedidoId = table.Column<long>(type: "bigint", nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_TB_PRODUTO", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_TB_PRODUTO_TB_CAIXA_CaixaId",
-                        column: x => x.CaixaId,
-                        principalTable: "TB_CAIXA",
-                        principalColumn: "Id");
                     table.ForeignKey(
                         name: "FK_TB_PRODUTO_TB_Dimensao_DimensaoId",
                         column: x => x.DimensaoId,
@@ -94,11 +88,6 @@ namespace LojaDoSeuManoel.Infra.Data.SqlServer.Migrations
                 column: "DimensaoId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_TB_PRODUTO_CaixaId",
-                table: "TB_PRODUTO",
-                column: "CaixaId");
-
-            migrationBuilder.CreateIndex(
                 name: "IX_TB_PRODUTO_DimensaoId",
                 table: "TB_PRODUTO",
                 column: "DimensaoId");
@@ -113,16 +102,16 @@ namespace LojaDoSeuManoel.Infra.Data.SqlServer.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "TB_PRODUTO");
-
-            migrationBuilder.DropTable(
                 name: "TB_CAIXA");
 
             migrationBuilder.DropTable(
-                name: "TB_PEDIDO");
+                name: "TB_PRODUTO");
 
             migrationBuilder.DropTable(
                 name: "TB_Dimensao");
+
+            migrationBuilder.DropTable(
+                name: "TB_PEDIDO");
         }
     }
 }

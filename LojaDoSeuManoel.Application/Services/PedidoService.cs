@@ -21,36 +21,113 @@ namespace LojaDoSeuManoel.Application.Services
         private readonly IMapper _mapper;
         private readonly IMediator _mediator;
         private readonly ICaixaDomainService _caixaDomainService;
+        private readonly IDimensaoDomainService _dimensaoDomainService;
 
-        public PedidoService(IPedidoDomainService pedidoDomainService, IMapper mapper, IMediator mediator, ICaixaDomainService caixaDomainService)
+        public PedidoService(IPedidoDomainService pedidoDomainService, IMapper mapper, IMediator mediator, ICaixaDomainService caixaDomainService, IDimensaoDomainService dimensaoDomainService)
         {
             _pedidoDomainService = pedidoDomainService;
             _mapper = mapper;
             _mediator = mediator;
             _caixaDomainService = caixaDomainService;
+            _dimensaoDomainService = dimensaoDomainService;
+        }
+
+
+        public async Task<Pedido> Empacotar(Pedido pedido)
+        {
+            // Verifica se a lista de caixas do pedido está inicializada. Se não, inicializa.
+            if (pedido.Caixas == null)
+            {
+                pedido.Caixas = new List<Caixa>();
+            }
+
+            var caixas = _caixaDomainService.GetAllAsync().Result;
+            var caixasUsadas = new List<Caixa>();
+            
+
+            foreach (var produto in pedido.Produtos)
+            {
+                bool alocado = false;
+
+                foreach (var caixa in caixas)
+                {
+                    if (ProdutoCabeNaCaixa(produto, caixa))
+                    {
+                        if (caixa.Produtos == null)
+                        {
+                            caixa.Produtos = new List<Produto>();
+                        }
+                        caixa.Produtos.Add(produto);
+                        caixasUsadas.Add(caixa);
+                        alocado = true;
+                        break;
+                    }
+                }
+
+                if (!alocado)
+
+                    
+                {
+                    var caixaDisponivel = SelecionarCaixaDisponivel(produto);
+                    if (caixaDisponivel != null)
+                    {
+                        if (caixaDisponivel.Produtos == null)
+                        {
+                            caixaDisponivel.Produtos = new List<Produto>();
+                        }
+                        caixaDisponivel.Produtos.Add(produto);
+                        caixasUsadas.Add(caixaDisponivel);
+                    }
+                    else
+                    {
+                       pedido.Observacao = $"Produto {produto.ProdutoId} não cabe em nenhuma caixa disponível.";
+
+                    }
+                }
+            }
+
+            pedido.Caixas.AddRange(caixasUsadas);
+
+            return pedido;
+        }
+
+        private bool ProdutoCabeNaCaixa(Produto produto, Caixa caixa)
+        {
+            var dimensao = _dimensaoDomainService.GetByIdAsync(caixa.DimensaoId).Result;
+
+            return produto.Dimensao?.Altura <= dimensao.Altura &&
+                   produto.Dimensao.Largura <= dimensao.Largura &&
+                   produto.Dimensao.Comprimento <= dimensao.Comprimento;
+        }
+
+        private Caixa SelecionarCaixaDisponivel(Produto produto)
+        {
+            List<Caixa> caixasDisponiveis = _caixaDomainService.GetAllAsync().Result;
+
+            foreach (var caixa in caixasDisponiveis)
+            {
+                if (ProdutoCabeNaCaixa(produto, caixa))
+                {
+                    return new Caixa
+                    {
+                        CaixaId = caixa.CaixaId,
+                        Dimensao = caixa.Dimensao
+                        
+                    };
+                }
+            }
+            return null;
         }
 
         public async Task<PedidoResponseDTO> AddAsync(PedidoRequestDTO request)
         {
             var pedido = _mapper.Map<Pedido>(request);
             string observacao = string.Empty;
-            Caixa caixa = new Caixa();
+            List<Caixa?> caixas = new List<Caixa?>();
 
-            //Verifica as dimenssões do pedido
-            foreach (var item in pedido.Produtos)
-            {
-                var isExisteDimensao = _caixaDomainService.VerificaDimensao(item.Dimensao.Altura, item.Dimensao.Largura, item.Dimensao.Comprimento).Result;
-                if (!isExisteDimensao)
-                {
-                    observacao = "Produto não cabe em nenhuma caixa disponível.";
-                }
-                else
-                {
-                    caixa = _caixaDomainService.GetCaixa(item.Dimensao.Altura, item.Dimensao.Largura, item.Dimensao.Comprimento).Result;
-                }
+          
 
-
-            }
+            pedido = await Empacotar(pedido);
 
             var result = await _pedidoDomainService.AddAsync(pedido);
 
@@ -73,14 +150,15 @@ namespace LojaDoSeuManoel.Application.Services
             // Mapeamento manual de result para PedidoResponseDTO
             var response = new PedidoResponseDTO
             {
-                Id = result.PedidoId,
-                CaixaId = caixa?.Id.ToString(),
-                Produtos = result.Produtos?.Select(x => new ProdutoResponseDTO
+                Pedido_Id = result.PedidoId,
+                Caixas = result.Caixas
+                .GroupBy(caixa => caixa.CaixaId) 
+                .Select(grupoCaixa => new CaixaResponseDTO
                 {
-                    Id = x.Id,
-                    ProdutoId = x.ProdutoId
+                    Caixa = grupoCaixa.Key, 
+                    Produto = grupoCaixa.SelectMany(c => c.Produtos.Select(p => p.ProdutoId.ToString())).ToList() // Agrupa os produtos da mesma caixa
                 }).ToList(),
-                Observacao = observacao
+                Observacao = result.Observacao
             };
 
             return response;
@@ -141,6 +219,7 @@ namespace LojaDoSeuManoel.Application.Services
 
             return _mapper.Map<PedidoResponseDTO>(result);
         }
+
         public void Dispose()
         {
             _pedidoDomainService.Dispose();

@@ -14,7 +14,5 @@ namespace LojaDoSeuManoel.Infra.Data.SqlServer.Repositories
         public ProdutoRepository(DataContext context) : base(context)
         {
         }
-
-       
     }
 }

@@ -12,23 +12,13 @@ namespace LojaDoSeuManoel.Domain.Validations
     public class CaixaValidator : AbstractValidator<Caixa>
     {
         private readonly ICaixaRepository _caixaRepository;
-        //private string _currentCaixaId;
 
-        public CaixaValidator(ICaixaRepository caixaRepository
-            //, string currentCaixaId
-            )
+        public CaixaValidator(ICaixaRepository caixaRepository)
         {
             _caixaRepository = caixaRepository;
-            //_currentCaixaId = currentCaixaId;
             ConfigRules();
 
-        }
-
-        //método para receber o ID da Caixa
-        //public void SetCurrentCaixaId(string currentCaixaId)
-        //{
-        //    _currentCaixaId = currentCaixaId;
-        //}
+        }    
 
         public void ConfigRules() 
         {          

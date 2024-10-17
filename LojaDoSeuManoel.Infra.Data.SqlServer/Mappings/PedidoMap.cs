@@ -15,6 +15,10 @@ namespace LojaDoSeuManoel.Infra.Data.SqlServer.Mappings
             builder.Property(p => p.PedidoId).HasColumnName("ID");
             
             builder.HasMany(p => p.Produtos);
+
+            builder.HasMany(p => p.Caixas);
+
+            builder.Property(p => p.Observacao);
         }
     }
 }

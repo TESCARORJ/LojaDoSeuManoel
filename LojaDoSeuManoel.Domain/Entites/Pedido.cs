@@ -11,5 +11,7 @@ namespace LojaDoSeuManoel.Domain.Entites
     {
         public long PedidoId { get; set; }
         public List<Produto>? Produtos { get; set; }
+        public List<Caixa>? Caixas { get; set; }
+        public string Observacao { get; set; }
     }
 }

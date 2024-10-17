@@ -12,23 +12,13 @@ namespace LojaDoSeuManoel.Domain.Validations
     public class ProdutoValidator : AbstractValidator<Produto>
     {
         private readonly IProdutoRepository _produtoRepository;
-        //private string _currentProdutoId;
 
-        public ProdutoValidator(IProdutoRepository produtoRepository
-            //, string currentProdutoId
-            )
+        public ProdutoValidator(IProdutoRepository produtoRepository)
         {
             _produtoRepository = produtoRepository;
-            //_currentProdutoId = currentProdutoId;
             ConfigRules();
 
         }
-
-        //método para receber o ID da Produto
-        //public void SetCurrentProdutoId(string currentProdutoId)
-        //{
-        //    _currentProdutoId = currentProdutoId;
-        //}
 
         public void ConfigRules() 
         {          

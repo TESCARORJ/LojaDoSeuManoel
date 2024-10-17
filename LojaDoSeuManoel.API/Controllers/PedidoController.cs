@@ -30,6 +30,7 @@ namespace LojaDoSeuManoel.API.Controllers
         }
 
         [HttpPut("{id}")]
+        [ApiExplorerSettings(IgnoreApi = true)]
         [ProducesResponseType(typeof(PedidoResponseDTO), 200)]
         public async Task<IActionResult> Put(Guid id,[FromBody] PedidoRequestDTO request)
         {
@@ -42,6 +43,7 @@ namespace LojaDoSeuManoel.API.Controllers
         }
 
         [HttpDelete("{id}")]
+        [ApiExplorerSettings(IgnoreApi = true)]
         [ProducesResponseType(typeof(PedidoResponseDTO), 200)]
         public async Task<IActionResult> Delete(int id)
         {
@@ -54,6 +56,7 @@ namespace LojaDoSeuManoel.API.Controllers
         }       
 
         [HttpGet("{id}")]
+        [ApiExplorerSettings(IgnoreApi = true)]
         [ProducesResponseType(typeof(PedidoResponseDTO), 200)]
         public async Task<IActionResult> GetById(int id)
         {

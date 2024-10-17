@@ -41,10 +41,7 @@ namespace LojaDoSeuManoel.Domain.Services
             {
                 throw new DimensaoNotFoundException(dimensao.Id);
             }
-
-            //if(_validator is DimensaoValidator validator)
-            //    validator.SetCurrentDimensaoId(dimensao.Id);
-
+            
             var validatorResult = await _validator.ValidateAsync(dimensao);
             if (validatorResult.IsValid)
             {

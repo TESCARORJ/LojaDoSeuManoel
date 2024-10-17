@@ -8,9 +8,8 @@ namespace LojaDoSeuManoel.Application.DTOs
 {
     public class PedidoResponseDTO
     {
-        public long Id { get; set; }
-        public string? CaixaId { get; set; }
-        public List<ProdutoResponseDTO>? Produtos { get; set; }
+        public long Pedido_Id { get; set; }
+        public List<CaixaResponseDTO> Caixas { get; set; }
         public string? Observacao { get; set; }
     }
 }

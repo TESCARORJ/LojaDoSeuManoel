@@ -47,10 +47,7 @@ namespace LojaDoSeuManoel.Domain.Services
             if (!await _caixaRepository.VerifyExistsAsync(x => x.Id == caixa.Id))
             {
                 throw new CaixaNotFoundException(caixa.Id);
-            }
-
-            //if (_validator is CaixaValidator validator)
-            //    validator.SetCurrentCaixaId(caixa.CaixaId);
+            }           
 
             var validatorResult = await _validator.ValidateAsync(caixa);
             if (validatorResult.IsValid)
