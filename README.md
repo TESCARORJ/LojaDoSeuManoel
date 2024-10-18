@@ -50,6 +50,21 @@ Os seguintes repositórios estão disponíveis no Docker Hub:
 - **SQL Server**: [thiagotescarorj/sqlserver_ldsm](https://hub.docker.com/r/thiagotescarorj/sqlserver_ldsm)
 - **MongoDB**: [thiagotescarorj/mongodb_ldsm](https://hub.docker.com/r/thiagotescarorj/mongodb_ldsm)
 
+## Adição de registros (opcional)
+
+INSERT INTO TB_Dimensao 
+VALUES 
+(30,40,80),
+(80,50,40),
+(50,80,60)
+
+
+INSERT INTO TB_CAIXA (CaixaId, DimensaoId, Observacao, PedidoId)
+VALUES 
+('Caixa 1',1, NULL, NULL),
+('Caixa 2',2, NULL, NULL),
+('Caixa 3',3, NULL, NULL)
+
 ## Como Usar
 
 1. Clone este repositório.
