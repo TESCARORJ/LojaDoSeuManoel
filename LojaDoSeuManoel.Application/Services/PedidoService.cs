@@ -64,9 +64,7 @@ namespace LojaDoSeuManoel.Application.Services
                     }
                 }
 
-                if (!alocado)
-
-                    
+                if (!alocado)                    
                 {
                     var caixaDisponivel = SelecionarCaixaDisponivel(produto);
                     if (caixaDisponivel != null)
@@ -83,6 +81,11 @@ namespace LojaDoSeuManoel.Application.Services
                        pedido.Observacao = $"Produto {produto.ProdutoId} não cabe em nenhuma caixa disponível.";
 
                     }
+                }
+                else
+                {
+                    pedido.Observacao = $"Produto {produto.ProdutoId} embalado com sucesso.";
+
                 }
             }
 

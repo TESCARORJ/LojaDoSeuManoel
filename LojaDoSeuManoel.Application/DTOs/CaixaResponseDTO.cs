@@ -9,6 +9,7 @@ namespace LojaDoSeuManoel.Application.DTOs
     public class CaixaResponseDTO
     {
         public string Caixa { get; set; }
+        public string? CaixaId { get; set; }
         public List<string> Produto { get; set; }
 
     }
